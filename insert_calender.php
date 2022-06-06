@@ -12,38 +12,33 @@
 
         // 안드로이드 코드의 postParameters 변수에 적어준 이름을 가지고 값을 전달 받는다.
 
+        $month=$_POST['month_s'];
+        $day=$_POST['day_s']; // 단말 TimeStamp는 POST로 전달받음
         $name=$_POST['name_s'];
-        $code=$_POST['code_s']; // 단말 TimeStamp는 POST로 전달받음    
-        $division=$_POST['division_s'];
-        $phoneNo=$_POST['phoneNo_s'];
-        $address=$_POST['address_s'];
+        $contents=$_POST['contents_s'];
 
 
-        if(empty($name)){
+        if(empty($month)){
             $errMSG = "Input name";
         }
-        else if(empty($code)){
+        else if(empty($day)){
             $errMSG = "Input code";
         }
-        else if(empty($division)){
+        else if(empty($name)){
             $errMSG = "Input division";
         }
-        else if(empty($phoneNo)){
+        else if(empty($contents)){
             $errMSG = "Input phoneNo";
-        }
-        else if(empty($address)){
-            $errMSG = "Input address";
         }
 
         if(!isset($errMSG))
         {
             try{
-                $stmt = $con->prepare('INSERT INTO member(name, code, division, phoneNo, address) VALUES(:name, :code, :division, :phoneNo, :address)');
+                $stmt = $con->prepare('INSERT INTO calender(month, day, name, contents) VALUES(:month, :day, :name, :contents)');
+                $stmt->bindParam(':month', $month);
+                $stmt->bindParam(':day', $day);
                 $stmt->bindParam(':name', $name);
-                $stmt->bindParam(':code', $code);
-                $stmt->bindParam(':division', $division);
-                $stmt->bindParam(':phoneNo', $phoneNo);
-                $stmt->bindParam(':address', $address);
+                $stmt->bindParam(':contents', $contents);
 
                 if($stmt->execute())
                 {

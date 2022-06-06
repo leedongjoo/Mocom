@@ -48,13 +48,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) { // 클릭시 전송.
 
-                String name_s = month.getText().toString();
-                String code_s = day.getText().toString();
-                String division_s = name.getText().toString();
-                String phoneNo_s = contents.getText().toString();
+                String month_s = month.getText().toString();
+                String day_s = day.getText().toString();
+                String name_s = name.getText().toString();
+                String contents_s = contents.getText().toString();
 
                 InsertData task = new InsertData();
-                task.execute("http://" + IP_ADDRESS + "/insert_student.php", name_s, code_s, division_s, phoneNo_s);
+                task.execute("http://" + IP_ADDRESS + "/insert_calender.php", month_s, day_s, name_s, contents_s);
 
                 month.setText("");
                 day.setText("");
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             String serverURL = (String)params[0];
-            String postParameters = "name_s=" + month_s + "&day_s=" + day_s + "&name_s="
+            String postParameters = "month_s=" + month_s + "&day_s=" + day_s + "&name_s="
                     + name_s + "&contents_s=" + contents_s;
 
 
