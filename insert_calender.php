@@ -3,7 +3,7 @@
     error_reporting(E_ALL); 
     ini_set('display_errors',1); 
 
-    include('dbcon_student.php');
+    include('dbcon_calender.php');
 
     $android = strpos($_SERVER['HTTP_USER_AGENT'], "Android");
 

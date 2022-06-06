@@ -6,7 +6,7 @@
     <meta name="keywords" content="Welcome">
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
-    <title>서버연동실습</title>
+    <title>달력입니다</title>
     <link rel="stylesheet" href="nicepage.css" media="screen">
 <link rel="stylesheet" href="Monitoring.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
@@ -30,7 +30,7 @@
     <section class="u-clearfix u-section-1" id="sec-6d33">
       <div class="u-clearfix u-sheet u-sheet-1">
 
-        <br><br><center><h3>서버 연동 연습</h3><br></center>
+        <br><br><h3>서버 연동 연습</h3><br>
         <script>
 
           function realtimeClock() {
@@ -69,29 +69,29 @@
         </script>
 
         <body onload="realtimeClock()">
-        <center>
+       
           <form name="rtcForm">
             <input style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;" type="text" name="rtcInput" size="20" readonly="readonly" />
           </form>
-        </center>
+        
 
         <br>
         
             <?php
 
-                $conn = mysqli_connect("localhost", "gabkeun", "1234" , "platon");
-                $sql = "SELECT * FROM member ORDER BY no DESC";
+                $conn = mysqli_connect("localhost", "dongjoo", "1234" , "calender");
+                $sql = "SELECT * FROM calender ORDER BY no DESC";
                 $result = mysqli_query($conn, $sql);
 
                 $number = 0;
 
-                echo "<center><table width = '1000' bordercolor='grey' cellpadding='0' cellspacing='0' bordercolor='#000000' style='border-collapse:collapse'><th>순서</th><th>이름</th><th>학번</th><th> 학과 </th><th> 전화번호 </th><th>주소</th>";
+                echo "<center><table width = '1000' bordercolor='grey' cellpadding='0' cellspacing='0' bordercolor='#000000' style='border-collapse:collapse'><th>순서</th><th>월</th><th>일</th><th> 일정 이름 </th><th> 일정 정보 </th>";
 
 
                 while($row = mysqli_fetch_assoc($result)) {      
 
                    echo "<tr>
-                          <td width='40' align='center'>".$number."</td><td width='150' align='center'>".$row['name']."</td><td width='150' align='center'>".$row['code']."</td><td width='150' align='center'>".$row['division']."</td><td width='200' align='center'>".$row['phoneNo']."</td><td width='200' align='center'>".$row['address']."</td></tr>";
+                          <td width='40' align='center'>".$number."</td><td width='150' align='center'>".$row['month']."</td><td width='150' align='center'>".$row['day']."</td><td width='150' align='center'>".$row['name']."</td><td width='200' align='center'>".$row['contents']."</td><td width='200'</tr>";
 
                    $number = $number+1;
 
